@@ -51,6 +51,98 @@ function buildProblems(problems) {
   });
 }
 
+/**
+ * crossSearchModule — "search every site at once" launcher.
+ *
+ * Important honesty note: this does NOT scrape or fetch live results from
+ * any site. There's no public product-search API for these platforms, and
+ * scraping them client-side is blocked by CORS (and server-side scraping
+ * would be fragile and against most sites' terms). What it actually does:
+ * builds each site's own search-results URL for the typed query and opens
+ * it in a new tab — a real, working shortcut, just not a live results feed.
+ */
+function crossSearchModule(SITES) {
+  const form = document.getElementById("crossSearchForm");
+  const input = document.getElementById("crossSearchInput");
+  const results = document.getElementById("crossSearchResults");
+  if (!form || !input || !results) return;
+
+  const searchable = SITES.filter((s) => !!s.searchUrl);
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const query = input.value.trim();
+    if (!query) return;
+
+    results.innerHTML = "";
+    results.classList.add("show");
+
+    if (searchable.length === 0) {
+      results.innerHTML = `<p class="cross-search-empty">No sites with a known search pattern yet.</p>`;
+      return;
+    }
+
+    const frag = document.createDocumentFragment();
+    searchable.forEach((site) => {
+      const url = site.searchUrl.replace("{q}", encodeURIComponent(query));
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.className = "cross-result";
+      const badgeClass = site.searchConfidence === "confirmed" ? "confirmed" : "best-guess";
+      const badgeText = site.searchConfidence === "confirmed" ? "Confirmed pattern" : "Best-guess — verify";
+      a.innerHTML = `
+        <div class="cross-result-top">
+          <span class="cross-result-name">${escapeHtml(site.name)}</span>
+          <span class="cross-result-go">Open ↗</span>
+        </div>
+        <span class="confidence-badge ${badgeClass}">${badgeText}</span>
+        <span class="cross-result-note">${escapeHtml(site.cat)} · ${escapeHtml(site.deliveryLabel)}</span>
+      `;
+      frag.appendChild(a);
+    });
+    results.appendChild(frag);
+
+    const skipped = SITES.length - searchable.length;
+    if (skipped > 0) {
+      const note = document.createElement("p");
+      note.className = "cross-search-empty";
+      note.textContent = `${skipped} site(s) skipped — no confirmed search URL pattern on file, visit their homepage directly.`;
+      results.appendChild(note);
+    }
+  });
+}
+
+/**
+ * Adds a real 3D perspective tilt to a card, following the pointer.
+ * Skipped entirely under prefers-reduced-motion.
+ */
+function attachTilt(card) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const MAX_TILT = 7; // degrees
+  function onMove(e) {
+    const rect = card.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width; // 0..1
+    const py = (e.clientY - rect.top) / rect.height;
+    const rotY = (px - 0.5) * MAX_TILT * 2;
+    const rotX = (0.5 - py) * MAX_TILT * 2;
+    card.style.transform = `rotate(var(--rest-rotate, 0deg)) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-3px)`;
+  }
+  function onLeave() {
+    card.style.transform = "";
+  }
+  card.addEventListener("pointermove", onMove);
+  card.addEventListener("pointerleave", onLeave);
+  card.addEventListener("blur", onLeave);
+}
+
 function directoryModule(SITES) {
   let currentChip = "All";
   let searchTerm = "";
@@ -143,6 +235,7 @@ function directoryModule(SITES) {
           showToast("Copy not supported on this browser");
         }
       });
+      attachTilt(card);
       frag.appendChild(card);
     });
     grid.appendChild(frag);
@@ -218,6 +311,7 @@ async function boot() {
     }
     buildProblems(data.problems || []);
     directoryModule(data.sites || []);
+    crossSearchModule(data.sites || []);
     loadingState.classList.add("hidden");
     controls.hidden = false;
     main.hidden = false;

@@ -8,7 +8,9 @@
       "delivery": "nationwide",
       "deliveryLabel": "Nationwide — confirmed",
       "note": "47+ cities, 15+ delivery hubs including a dedicated Bharatpur (Chitwan) pickup point. Widest catalog, buyer protection, 'Daraz Mall' badge = verified seller. Best default choice for Chitwan/Gaindakot.",
-      "trust": "verified"
+      "trust": "verified",
+      "searchUrl": "https://www.daraz.com.np/catalog/?q={q}",
+      "searchConfidence": "confirmed"
     },
     {
       "cat": "General Marketplace",
@@ -17,7 +19,9 @@
       "delivery": "mostly",
       "deliveryLabel": "Claims nationwide — unverified",
       "note": "IMS Group backed, reward-point system. Coverage outside the Valley wasn't independently confirmable — check your city at checkout.",
-      "trust": "caution"
+      "trust": "caution",
+      "searchUrl": "https://smartdoko.com/?s={q}&post_type=product",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "General Marketplace",
@@ -26,7 +30,9 @@
       "delivery": "mostly",
       "deliveryLabel": "Claims nationwide — unverified",
       "note": "Older, still-active general marketplace. Confirm Chitwan/Gaindakot delivery before ordering.",
-      "trust": "caution"
+      "trust": "caution",
+      "searchUrl": "https://thulo.com/?s={q}",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "General Marketplace",
@@ -35,7 +41,9 @@
       "delivery": "mostly",
       "deliveryLabel": "Claims nationwide — unverified",
       "note": "Fashion-focused, partnered with Flipkart/Myntra imports. Some post-pandemic reliability complaints reported — check recent reviews first.",
-      "trust": "caution"
+      "trust": "caution",
+      "searchUrl": "https://sastodeal.com/catalogsearch/result/?q={q}",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "Electronics Specialist",
@@ -44,7 +52,9 @@
       "delivery": "mostly",
       "deliveryLabel": "KTM-based, ships nationwide",
       "note": "Authorized Logitech distributor — genuine warranty. Kathmandu-based; confirm the courier fee for Chitwan/Gaindakot at checkout.",
-      "trust": "verified"
+      "trust": "verified",
+      "searchUrl": "https://maxnepal.com.np/?s={q}&post_type=product",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "Electronics Specialist",
@@ -53,7 +63,9 @@
       "delivery": "mostly",
       "deliveryLabel": "KTM-based, ships nationwide",
       "note": "Logitech accessories, verified live pricing. Confirm delivery fee/time to your city.",
-      "trust": "verified"
+      "trust": "verified",
+      "searchUrl": "https://electronestnepal.com/?s={q}&post_type=product",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "Electronics Specialist",
@@ -62,7 +74,9 @@
       "delivery": "mostly",
       "deliveryLabel": "KTM-based, ships nationwide",
       "note": "Broad computer accessories catalog with nationwide courier shipping.",
-      "trust": "verified"
+      "trust": "verified",
+      "searchUrl": "https://itti.com.np/?s={q}&post_type=product",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "Electronics Specialist",
@@ -71,7 +85,9 @@
       "delivery": "mostly",
       "deliveryLabel": "KTM-based, ships nationwide",
       "note": "Gadgets and appliances, IT-distributor backed.",
-      "trust": "verified"
+      "trust": "verified",
+      "searchUrl": "https://www.neostore.com.np/?s={q}&post_type=product",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "Electronics Specialist",
@@ -80,7 +96,9 @@
       "delivery": "mostly",
       "deliveryLabel": "KTM-based, ships nationwide",
       "note": "Peripherals, storage, keyboards and mice — courier delivery nationwide.",
-      "trust": "verified"
+      "trust": "verified",
+      "searchUrl": "https://infotechsnepal.com.np/?s={q}&post_type=product",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "Electronics Specialist",
@@ -89,7 +107,9 @@
       "delivery": "mostly",
       "deliveryLabel": "KTM-based, ships nationwide",
       "note": "Budget storage devices and networking gear.",
-      "trust": "verified"
+      "trust": "verified",
+      "searchUrl": "https://qualitycomputer.com.np/?s={q}&post_type=product",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "Electronics Specialist",
@@ -98,7 +118,9 @@
       "delivery": "mostly",
       "deliveryLabel": "KTM-based, ships nationwide",
       "note": "Genuine branded storage, SanDisk specialist. Watch for baseline 'discount' pricing tricks.",
-      "trust": "verified"
+      "trust": "verified",
+      "searchUrl": "https://www.megatech.com.np/?s={q}&post_type=product",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "Electronics Specialist",
@@ -107,7 +129,9 @@
       "delivery": "mostly",
       "deliveryLabel": "KTM-based, ships nationwide",
       "note": "Networking gear, router UPS units, USB dongles.",
-      "trust": "verified"
+      "trust": "verified",
+      "searchUrl": "https://onin.com.np/?s={q}&post_type=product",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "Classifieds / P2P",
@@ -116,7 +140,9 @@
       "delivery": "limited",
       "deliveryLabel": "Depends entirely on the seller",
       "note": "Huge used-goods market, but no platform-backed refund mechanism. Many Kathmandu sellers only do in-person meetup — confirm the individual seller will ship to Chitwan/Gaindakot before paying anything.",
-      "trust": "caution"
+      "trust": "caution",
+      "searchUrl": "https://hamrobazar.com/search?q={q}",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "Cross-Border Import",
@@ -125,7 +151,9 @@
       "delivery": "nationwide",
       "deliveryLabel": "Nationwide via courier",
       "note": "Imported/luxury brands not sold locally. Ships countrywide but expect longer transit and customs handling time.",
-      "trust": "verified"
+      "trust": "verified",
+      "searchUrl": "https://www.nepal.ubuy.com/search/?ref=n_sb&q={q}",
+      "searchConfidence": "best-guess"
     },
     {
       "cat": "Food & Grocery",
@@ -134,7 +162,9 @@
       "delivery": "limited",
       "deliveryLabel": "NOT available in Chitwan/Gaindakot",
       "note": "Confirmed coverage: Kathmandu, Lalitpur, Bhaktapur, and limited parts of Pokhara only. Do not expect service in Chitwan or Gaindakot.",
-      "trust": "flag"
+      "trust": "flag",
+      "searchUrl": null,
+      "searchConfidence": null
     },
     {
       "cat": "Food & Grocery",
@@ -143,21 +173,59 @@
       "delivery": "limited",
       "deliveryLabel": "Coverage unconfirmed outside Valley",
       "note": "Popular for Kathmandu Valley household staples. No confirmed evidence of Chitwan/Gaindakot service — check before assuming it's available.",
-      "trust": "caution"
+      "trust": "caution",
+      "searchUrl": null,
+      "searchConfidence": null
     }
   ],
   "problems": [
-    { "title": "Counterfeit / fake-branded goods", "body": "Electronics, cosmetics and \"luxury\" items are frequently sold as genuine but are knockoffs, especially outside official distributors or a marketplace's verified-seller badge." },
-    { "title": "No functioning consumer courts", "body": "Nepal's Supreme Court ordered consumer courts set up in all seven provinces years ago; the government still hasn't done it, so shoppers have no fast legal channel for disputes." },
-    { "title": "Outdated cyber & consumer law", "body": "The Electronic Transaction Act (2008) predates e-commerce entirely, and the Consumer Protection Act (2018) doesn't clearly cover digital transaction disputes." },
-    { "title": "Unregistered Facebook/Instagram \"shops\"", "body": "Informal sellers with no business registration or PAN who vanish after taking payment. A separate, higher-risk category from the registered sites in this directory." },
-    { "title": "Advance-payment fraud", "body": "Sellers demanding 100% prepayment for \"limited stock\" items that never arrive, then going unreachable." },
-    { "title": "Slower, less certain delivery outside the Valley", "body": "Next-day express is largely a Kathmandu Valley feature; Chitwan/Gaindakot and other cities typically get 2–5 business day standard delivery, longer during monsoon landslides or festival-season surges." },
-    { "title": "Wrong item shipped, slow returns", "body": "Especially common with lesser-known or informal sellers; registered platforms handle this far better than social-media stores." },
-    { "title": "No buyer protection on classifieds", "body": "Hamrobazar-style peer-to-peer listings have no platform-backed refund mechanism; you're negotiating directly with a stranger." },
-    { "title": "Fake \"discount\" pricing", "body": "An inflated \"original price\" crossed out next to a normal price, designed to make a standard rate look like a deal." },
-    { "title": "Cash-on-delivery often restricted to the Valley", "body": "Many sellers require prepayment for Chitwan/Gaindakot and other outer regions, raising fraud risk since you can't verify goods before paying." },
-    { "title": "Overwhelmed Cyber Bureau", "body": "Nepal Police's Cyber Bureau logs thousands of online-fraud cases a year but lacks the staff/technical capacity to investigate most of them promptly." },
-    { "title": "Grocery/food-delivery apps are hyper-local", "body": "Foodmandu and similar quick-commerce apps are largely Kathmandu Valley (+ limited Pokhara) only. They generally do not operate in Chitwan or Gaindakot — don't assume coverage." }
+    {
+      "title": "Counterfeit / fake-branded goods",
+      "body": "Electronics, cosmetics and \"luxury\" items are frequently sold as genuine but are knockoffs, especially outside official distributors or a marketplace's verified-seller badge."
+    },
+    {
+      "title": "No functioning consumer courts",
+      "body": "Nepal's Supreme Court ordered consumer courts set up in all seven provinces years ago; the government still hasn't done it, so shoppers have no fast legal channel for disputes."
+    },
+    {
+      "title": "Outdated cyber & consumer law",
+      "body": "The Electronic Transaction Act (2008) predates e-commerce entirely, and the Consumer Protection Act (2018) doesn't clearly cover digital transaction disputes."
+    },
+    {
+      "title": "Unregistered Facebook/Instagram \"shops\"",
+      "body": "Informal sellers with no business registration or PAN who vanish after taking payment. A separate, higher-risk category from the registered sites in this directory."
+    },
+    {
+      "title": "Advance-payment fraud",
+      "body": "Sellers demanding 100% prepayment for \"limited stock\" items that never arrive, then going unreachable."
+    },
+    {
+      "title": "Slower, less certain delivery outside the Valley",
+      "body": "Next-day express is largely a Kathmandu Valley feature; Chitwan/Gaindakot and other cities typically get 2–5 business day standard delivery, longer during monsoon landslides or festival-season surges."
+    },
+    {
+      "title": "Wrong item shipped, slow returns",
+      "body": "Especially common with lesser-known or informal sellers; registered platforms handle this far better than social-media stores."
+    },
+    {
+      "title": "No buyer protection on classifieds",
+      "body": "Hamrobazar-style peer-to-peer listings have no platform-backed refund mechanism; you're negotiating directly with a stranger."
+    },
+    {
+      "title": "Fake \"discount\" pricing",
+      "body": "An inflated \"original price\" crossed out next to a normal price, designed to make a standard rate look like a deal."
+    },
+    {
+      "title": "Cash-on-delivery often restricted to the Valley",
+      "body": "Many sellers require prepayment for Chitwan/Gaindakot and other outer regions, raising fraud risk since you can't verify goods before paying."
+    },
+    {
+      "title": "Overwhelmed Cyber Bureau",
+      "body": "Nepal Police's Cyber Bureau logs thousands of online-fraud cases a year but lacks the staff/technical capacity to investigate most of them promptly."
+    },
+    {
+      "title": "Grocery/food-delivery apps are hyper-local",
+      "body": "Foodmandu and similar quick-commerce apps are largely Kathmandu Valley (+ limited Pokhara) only. They generally do not operate in Chitwan or Gaindakot — don't assume coverage."
+    }
   ]
 }

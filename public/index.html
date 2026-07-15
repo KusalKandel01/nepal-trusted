@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Nepal Trusted Site Directory — Delivery Network Ledger</title>
-<meta name="description" content="A checked directory of Nepal's e-commerce platforms — which ones actually deliver to Kathmandu Valley, Chitwan, Gaindakot, and beyond — plus a list of known problems to watch for when shopping online in Nepal.">
+<meta name="description" content="A checked directory of Nepal's e-commerce platforms — search a product across every site at once, see which ones actually deliver to Kathmandu Valley, Chitwan, Gaindakot and beyond, and a list of known problems to watch for.">
 <meta name="theme-color" content="#101a2e">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://your-domain-here.example/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nepal Trusted Site Directory — Delivery Network Ledger">
-<meta property="og:description" content="Which Nepali e-commerce sites actually deliver to Chitwan, Gaindakot and beyond — checked, flagged, and searchable.">
+<meta property="og:description" content="Search a product across every trusted Nepali e-commerce site at once. Checked for delivery coverage in Chitwan, Gaindakot and beyond.">
 <meta property="og:image" content="./icon.svg">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
@@ -30,13 +30,15 @@
 <body>
 <a href="#main-content" class="skip-link">Skip to directory</a>
 
-<section class="hero" aria-label="Nepal delivery network visualization">
-  <canvas id="scene-canvas" role="img" aria-label="Rotating 3D map of Nepal showing a delivery network connecting Kathmandu to Chitwan, Gaindakot, Pokhara and other cities"></canvas>
-  <div id="labelKtm" class="city-label">Kathmandu — hub</div>
-  <div id="labelChitwan" class="city-label">Chitwan (Bharatpur)</div>
-  <div id="labelGaindakot" class="city-label">Gaindakot</div>
-  <div class="hero-fallback-note" id="engineNote"></div>
+<!-- Persistent full-page 3D background. Fixed behind every section, not just the hero. -->
+<canvas id="scene-canvas" role="img" aria-label="Rotating 3D map of Nepal showing a delivery network connecting Kathmandu to Chitwan, Gaindakot, Pokhara and other cities"></canvas>
+<div class="bg-scrim" aria-hidden="true"></div>
+<div id="labelKtm" class="city-label">Kathmandu — hub</div>
+<div id="labelChitwan" class="city-label">Chitwan (Bharatpur)</div>
+<div id="labelGaindakot" class="city-label">Gaindakot</div>
+<div class="hero-fallback-note" id="engineNote"></div>
 
+<section class="hero" aria-label="Introduction">
   <div class="hero-overlay">
     <div class="hero-inner">
       <div class="eyebrow">Nationwide Edition · Live Delivery Network</div>
@@ -46,13 +48,30 @@
         <button class="btn btn-primary" id="ctaExplore" type="button">Browse the directory</button>
         <button class="btn btn-ghost" id="ctaProblems" type="button">See known problems</button>
       </div>
-      <p class="network-caption">Stylized network view, not to scale. Glowing dots trace real delivery lanes reported by <b>Daraz Nepal</b> from its Kathmandu hub out to <b>Bharatpur (Chitwan)</b>, <b>Gaindakot</b>, Pokhara, Butwal, Birgunj, Janakpur and Biratnagar.</p>
+      <p class="network-caption">Stylized network view, not to scale. Glowing dots trace real delivery lanes reported by <b>Daraz Nepal</b> from its Kathmandu hub out to <b>Bharatpur (Chitwan)</b>, <b>Gaindakot</b>, Pokhara, Butwal, Birgunj, Janakpur and Biratnagar. Drag to look around, scroll to keep exploring — the map follows you down the page.</p>
     </div>
   </div>
-
   <button class="scroll-cue" id="scrollCue" type="button" aria-label="Scroll to directory">
     <span>Scroll</span><span class="chev" aria-hidden="true"></span>
   </button>
+</section>
+
+<!-- ===== Product search across every site ===== -->
+<section class="search-across" aria-labelledby="searchAcrossTitle">
+  <div class="glass-panel">
+    <h2 id="searchAcrossTitle">Find a product across every site</h2>
+    <p class="search-across-note">
+      Type what you're looking for and this opens that <em>exact</em> search on each site's own search page in a new tab —
+      it does not scrape or display live prices here (no site here offers a public API for that, and scraping would be
+      unreliable and against most sites' terms). Think of it as one click instead of nine.
+    </p>
+    <form id="crossSearchForm" class="cross-search-form">
+      <label for="crossSearchInput" class="visually-hidden">Product to search for</label>
+      <input type="text" id="crossSearchInput" placeholder="e.g. wireless mouse, router UPS, pendrive 64GB…" autocomplete="off" required>
+      <button type="submit" class="btn btn-primary">Search all sites</button>
+    </form>
+    <div id="crossSearchResults" class="cross-search-results" role="region" aria-live="polite"></div>
+  </div>
 </section>
 
 <p class="loading-state" id="loadingState">Loading directory data…</p>

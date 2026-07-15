@@ -108,6 +108,46 @@ you only ever need to edit one place). Each entry:
 }
 ```
 
+## Product search across sites — what it actually does
+
+Typing a product and hitting "Search all sites" does **not** scrape or display
+live results/prices in-page. There's no public product-search API for any of
+these platforms, and client-side scraping is blocked by CORS (server-side
+scraping would also be fragile and against most sites' terms of service).
+
+What it genuinely does: builds each site's own search-results URL for the
+exact query you typed and opens it in a new tab — a real, working shortcut
+that replaces typing the same query into nine different search boxes.
+
+Each result is tagged with a confidence badge:
+- **Confirmed pattern** — verified against the site's actual URL structure.
+- **Best-guess — verify** — inferred from common platform conventions (most
+  small Nepali shops run WooCommerce, whose default search is `?s=query`).
+  These should work for most sites but haven't been individually confirmed,
+  so double-check the results landed on the right page.
+
+Search patterns live in `sites.json` under `searchUrl` (`{q}` is replaced
+with the encoded query) and `searchConfidence`.
+
+## The 3D background — now page-wide, not hero-only
+
+The Three.js scene (`scene.js`) is a `position: fixed` canvas covering the
+entire viewport, sitting behind every section for the full scroll length —
+not just the hero. A gradient scrim (`.bg-scrim`) sits between the canvas
+and the content so text stays readable while the terrain is still visible
+through the translucent "glass" panels (search box, known-problems panel).
+
+Two things tie the 3D to the rest of the page instead of it just running
+in the background unrelated to what you're doing:
+- **Scroll-linked camera** — as you scroll down, the camera pulls back and
+  the focal point drifts toward the southern (Terai) markers.
+- **3D card tilt** — directory cards tilt in real 3D (`perspective` +
+  `rotateX/rotateY`) following the pointer, on top of the shared 3D canvas
+  behind them.
+
+Both respect `prefers-reduced-motion` — the tilt is skipped entirely, and
+the whole 3D layer falls back to the original static gradient background.
+
 ## Accessibility & performance notes
 
 - Respects `prefers-reduced-motion` and `navigator.connection.saveData` —

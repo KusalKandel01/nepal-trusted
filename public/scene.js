@@ -76,9 +76,8 @@ export async function initHeroScene({ canvasId = "scene-canvas", noteId = "engin
   }
 
   try {
-    const hero = canvas.closest(".hero");
-    let width = hero.clientWidth,
-      height = hero.clientHeight;
+    let width = window.innerWidth,
+      height = window.innerHeight;
 
     const scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0x101a2e, 0.028);
@@ -205,6 +204,19 @@ export async function initHeroScene({ canvasId = "scene-canvas", noteId = "engin
       idleSince = 0;
     const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 
+    // ---- Scroll-linked drift ----
+    // As the page scrolls, the camera pulls back and tilts slightly more
+    // overhead and the focal point drifts south toward the Terai cities —
+    // a subtle "flying over the network" feel that ties the 3D background
+    // to page position, since it now spans the entire site, not just the hero.
+    let scrollProgress = 0;
+    function updateScrollProgress() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      scrollProgress = max > 0 ? clamp(window.scrollY / max, 0, 1) : 0;
+    }
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    updateScrollProgress();
+
     function pointerDown(e) {
       dragging = true;
       idleSince = performance.now();
@@ -266,8 +278,8 @@ export async function initHeroScene({ canvasId = "scene-canvas", noteId = "engin
     }
 
     function onResize() {
-      width = hero.clientWidth;
-      height = hero.clientHeight;
+      width = window.innerWidth;
+      height = window.innerHeight;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
@@ -303,9 +315,14 @@ export async function initHeroScene({ canvasId = "scene-canvas", noteId = "engin
       if (!dragging && performance.now() - idleSince > 900) {
         targetTheta += dt * 0.12;
       }
+      const scrollPhiGoal = clamp(targetPhi - scrollProgress * 0.3, 0.35, 1.45);
+      const scrollRadiusGoal = targetRadius + scrollProgress * 7;
+      const scrollTargetZ = 2 + scrollProgress * 4.5;
+
       theta += (targetTheta - theta) * 0.08;
-      phi += (targetPhi - phi) * 0.08;
-      radius += (targetRadius - radius) * 0.08;
+      phi += (scrollPhiGoal - phi) * 0.05;
+      radius += (scrollRadiusGoal - radius) * 0.05;
+      target.z += (scrollTargetZ - target.z) * 0.05;
       camera.position.set(
         target.x + radius * Math.sin(phi) * Math.sin(theta),
         target.y + radius * Math.cos(phi),
