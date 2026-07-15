@@ -1,8 +1,0 @@
-[build]
-  publish = "public"
-  command = ""
-
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
